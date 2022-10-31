@@ -6,10 +6,11 @@ class bst{
 			node *right = NULL;
 		};
 	public:
-		node *root = NULL;
-
+		node *root = NULL;   	 	//One can access root value using bst.root
+		
 		void insert(int element){
 			node *n = new node;
+			n->data = element;
 			if(root == NULL){
 				root = n;
 				return;
@@ -28,7 +29,7 @@ class bst{
 		}
 		//O(h)   h : Height of tree
 
-		void inorder(node *temp = root){
+		void inorder(node *temp){
 			if(temp){
 				inorder(temp->left);
 				cout<<temp->data<<" ";
@@ -37,7 +38,7 @@ class bst{
 		}
 		//O(N)
 
-		void preorder(node *temp = root){
+		void preorder(node *temp){
 			if(temp){
 				cout<<temp->data<<" ";
 				preorder(temp->left);
@@ -46,7 +47,7 @@ class bst{
 		}
 		//O(N)
 
-		void postorder(node *temp = root){
+		void postorder(node *temp){
 			if(temp){
 				postorder(temp->left);
 				postorder(temp->right);
@@ -67,18 +68,57 @@ class bst{
 		//O(h)
 
 		void erase(int element){
-			node *location = find(element);
-			if(location){							//Finding next successor
+			node *location = root;
+			node *p = NULL;
+			while(location->data != element){
+				p=location;
+				if(location->data > element) location = location->left;
+				else location = location->right;
+			}
+			if(location == NULL) return;
+
+			if(location->left==NULL && location->right==NULL){
+				if(p==NULL) root=NULL;
+				else{
+					if(p->data > element) p->left = NULL;
+					else p->right = NULL;
+					free(location);
+				}
+			}
+			else if(location->left==NULL && location->right){
+				if(p==NULL){
+					root = root->right;
+					free(location);
+				}
+				else{
+					if(p->data > element) p->left = location->right;
+					else p->right = location->right;
+					free(location);
+				}
+			}
+			else if(location->left && location->right==NULL){
+				if(p==NULL){
+					root = root->right;
+					free(location);
+				}
+				else{
+					if(p->data > element) p->left = location->left;
+					else p->right = location->left;
+					free(location);
+				}
+			}
+			else{
 				node *temp = location->right;
-				node *p = NULL;
-				while(temp->left){
-					p = temp;
+				node *p1 = location;
+				while(temp->left){			//Finding next successor
+					p1=temp;
 					temp = temp->left;
 				}
 				location->data = temp->data;
-				p->left = temp->right;
+				p1->left = temp->right;
 				temp->right = NULL;
 				free(temp);
 			}
 		}
+		//O(h)
 };
