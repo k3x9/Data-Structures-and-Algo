@@ -1,2 +1,2 @@
 # Data-Structures-and-Algo
-This repo is for reference to all Data Structures and Algorithms in optimised way.
+This repository contain codes of different data structures and algorithms mentioned.
