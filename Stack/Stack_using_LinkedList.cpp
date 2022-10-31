@@ -5,19 +5,23 @@ class Stack{
 			node *next = NULL;
 		};
 	public:
+		int length = 0;
 		node *head = NULL;
 		void push(int element){
 			node *n = new node;
 			n->data = element;
 			if(head) n->next = head;
 			head = n;
+			length++;
 		}
 		//O(1)
 
 		void pop(){
+			if(head == NULL) return;
 			node *temp = head;
 			head = head->next;
 			free(temp);
+			length--;
 		}
 		//O(1)
 
@@ -29,6 +33,11 @@ class Stack{
 
 		bool isempty(){
 			return head == NULL;
+		}
+		//O(1)
+		
+		int size(){
+			return length;
 		}
 		//O(1)
 };
