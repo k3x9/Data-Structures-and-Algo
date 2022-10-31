@@ -32,4 +32,9 @@ class Stack{
 			return top_index == MAX-1;
 		}
 		//O(1)
+		
+		int size(){
+			return top_index + 1;
+		}
+		//O(1)
 };
