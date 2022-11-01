@@ -1,10 +1,9 @@
-class bst{
-	private:
-		struct node{
+struct node{
 			int data;
 			node *left = NULL;
 			node *right = NULL;
 		};
+class bst{
 	public:
 		node *root = NULL;   	 	//One can access root value using bst.root
 		
@@ -115,9 +114,16 @@ class bst{
 					temp = temp->left;
 				}
 				location->data = temp->data;
-				p1->left = temp->right;
-				temp->right = NULL;
-				free(temp);
+				if(p1 == location){
+					location->right = temp->right;
+					temp->right=NULL;
+					free(temp);
+				}
+				else{
+					p1->left = temp->right;
+					temp->right = NULL;
+					free(temp);
+				}
 			}
 		}
 		//O(h)
