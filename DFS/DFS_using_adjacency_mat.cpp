@@ -2,16 +2,15 @@
 using namespace std;
 
 void dfs(int *adj_mat,int n,int node,int vis[]){
-	if(vis[node] == 1) return;
 
 	//code part before visiting the current node
 
 	vis[node] = 1;
 	for(int i=0;i<=n;i++){
-		if(*(adj_mat + (n+1)*node + i) == 1){
+		if(*(adj_mat + (n+1)*node + i) == 1 && vis[node] == 0){
 
 			//code part before going to next node
-
+			
 			dfs(adj_mat,n,i,vis);
 
 			//code part after visiting next node
