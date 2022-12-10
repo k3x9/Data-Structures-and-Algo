@@ -8,3 +8,4 @@ This repository contain codes of different data structures and algorithms mentio
 
 # Algorithms :
 1. [DFS (Depth First Search)](https://github.com/k3x9/Data-Structures-and-Algo/tree/main/DFS)
+2. [BFS (Breadth First Search)](https://github.com/k3x9/Data-Structures-and-Algo/tree/main/BFS)
