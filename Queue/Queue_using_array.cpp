@@ -1,6 +1,6 @@
 class Queue{
 	public:
-		#define MAX 2
+		#define MAX 10000
 
 		int front_index = -1;
 		int back_index = -1;
