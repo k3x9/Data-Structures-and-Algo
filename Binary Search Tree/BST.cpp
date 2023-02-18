@@ -97,7 +97,7 @@ class bst{
 			}
 			else if(location->left && location->right==NULL){
 				if(p==NULL){
-					root = root->right;
+					root = root->left;
 					free(location);
 				}
 				else{
