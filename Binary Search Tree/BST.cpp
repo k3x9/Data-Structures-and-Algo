@@ -69,7 +69,7 @@ class bst{
 		void erase(int element){
 			node *location = root;
 			node *p = NULL;
-			while(location->data != element){
+			while(location->data != element && location!=NULL){
 				p=location;
 				if(location->data > element) location = location->left;
 				else location = location->right;
